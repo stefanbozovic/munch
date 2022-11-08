@@ -13,7 +13,7 @@ $("#dodajAkcijeForm").submit(function (event) {
     $inputs.prop("disabled", true);
   
     request = $.ajax({
-      url: "handler/dodaj.php",
+      url: "handler/dodajAkciju.php",
       type: "post",
       data: serializedData,
     });
