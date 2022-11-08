@@ -1,3 +1,19 @@
+<?php
+
+require "dbBroker.php";
+require "model/akcija.php";
+session_start();
+
+$result = Akcija::ucitaj($conn);
+if (!$result) {
+    echo "Greska kod upita<br>";
+    die();
+}
+if ($result->num_rows == 0) {
+    echo "Nema upisanih akcija";
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,53 +119,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-           Izmeni 
-        </button>
+      <?php  while ($red = $result->fetch_array()) { ?>
+        <tr>
+            <td><?php echo $red["akcija_id"] ?></td>
+            <td><?php echo $red["naziv"] ?></td>
+            <td><?php echo $red["procenat_popusta"] ?></td>
+            <td>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+                Izmeni 
+                </button>
+            </td>
+            <td>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                    Obrisi 
+            </button>
       </td>
-      <td>
-      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-            Obrisi 
-      </button>
-      </td>
-      
 
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-           Izmeni 
-        </button>
-      </td>
-      <td>
-      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-            Obrisi 
-      </button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-           Izmeni 
-        </button>
-      </td>
-      <td>
-      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-            Obrisi 
-      </button>
-      </td>
-    </tr>
+        </tr>
+    <?php
+    } ?>
   </tbody>
 </table>
     
