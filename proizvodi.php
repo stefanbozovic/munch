@@ -29,8 +29,8 @@ if ($result->num_rows == 0) {
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-  <a class="navbar-brand" href="index.php"> 
-    <img class="munchlogo" src="assets/images/munchmallow_logo.png" alt="logo proizvoda Munchmallow">
+    <a class="navbar-brand" href="index.php"> 
+        <img class="munchlogo" src="assets/images/munchmallow_logo.png" alt="logo proizvoda Munchmallow">
     </a>
   
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,7 +121,6 @@ if ($result->num_rows == 0) {
     </tr>
   </thead>
   <tbody>
-  
     <?php  while ($red = $result->fetch_array()) { ?>
         <tr>
             <td><?php echo $red["proizvod_id"] ?></td>
@@ -129,16 +128,15 @@ if ($result->num_rows == 0) {
             <td><?php echo $red["cena"] ?></td>
             <td><?php echo $red["akcija_id"] ?></td>
             <td>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-                Izmeni 
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+                    Izmeni 
                 </button>
             </td>
             <td>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
                     Obrisi 
-            </button>
-      </td>
-
+                </button>
+           </td>
         </tr>
     <?php
     } ?>

@@ -29,10 +29,9 @@ if ($result->num_rows == 0) {
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-  <a class="navbar-brand" href="index.php"> 
-    <img class="munchlogo" src="assets/images/munchmallow_logo.png" alt="logo proizvoda Munchmallow">
+    <a class="navbar-brand" href="index.php"> 
+      <img class="munchlogo" src="assets/images/munchmallow_logo.png" alt="logo proizvoda Munchmallow">
     </a>
-  
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,22 +54,33 @@ if ($result->num_rows == 0) {
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dodaj">
   Dodaj novu akciju
 </button>
-
-
 <div class="modal fade" id="dodaj" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
-      <div class="modal-header">
+      <form  action="#" method="post" id="dodajForm">
+        <div class="modal-header">
         <h1 class="modal-title fs-5" id="dodajLabel">Dodaj novi proizvod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="mb-3">
+            <label for="id" class="form-label">Id</label>
+            <input type="text" class="form-control" name="Id" id="id">
+        </div>
+        <div class="mb-3">
+            <label for="naziv" class="form-label">Naziv</label>
+            <input type="text" class="form-control" name="Naziv" id="naziv">
+        </div>
+        <div class="mb-3">
+            <label for="procenat_popusta" class="form-label">Procenat popusta</label>
+            <input type="text" class="form-control" name="ProcenatPopusta" id="procenat_popusta">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Dodaj</button>
+        <button  id="btnDodaj"  type="submit" class="btn btn-primary">Dodaj</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -81,8 +91,8 @@ if ($result->num_rows == 0) {
         <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni proizvod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body izmeniovde">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
@@ -98,7 +108,7 @@ if ($result->num_rows == 0) {
         <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi prozivod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body obrisiovde">
         ...
       </div>
       <div class="modal-footer">
@@ -125,21 +135,23 @@ if ($result->num_rows == 0) {
             <td><?php echo $red["naziv"] ?></td>
             <td><?php echo $red["procenat_popusta"] ?></td>
             <td>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-                Izmeni 
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+                    Izmeni 
                 </button>
             </td>
             <td>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-                    Obrisi 
-            </button>
-      </td>
-
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                        Obrisi 
+                </button>
+            </td>
         </tr>
     <?php
     } ?>
   </tbody>
 </table>
-    
+   
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
