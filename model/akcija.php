@@ -17,6 +17,13 @@ class Akcija
         $q = "SELECT * FROM akcije";
         return $conn->query($q);
     }
-}
+    
+    public static function add($id, $naziv, $procenat_popusta, mysqli $conn)
+    {
+        $q = "INSERT INTO akcije(akcija_id, naziv, procenat_popusta) VALUES('$id', '$naziv', '$procenat_popusta')";
+        return $conn->query($q);
+    }
 
+
+}
 ?>

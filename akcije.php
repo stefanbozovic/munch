@@ -57,7 +57,7 @@ if ($result->num_rows == 0) {
 <div class="modal fade" id="dodaj" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
-      <form  action="#" method="post" id="dodajForm">
+      <form  action="#" method="post" id="dodajAkcijeForm">
         <div class="modal-header">
         <h1 class="modal-title fs-5" id="dodajLabel">Dodaj novi proizvod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
