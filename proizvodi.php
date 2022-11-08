@@ -37,7 +37,62 @@
   </div>
 </nav>
 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dodaj">
+  Dodaj novi proizvod
+</button>
 
+
+<div class="modal fade" id="dodaj" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="dodajLabel">Dodaj novi proizvod</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
+        <button type="button" class="btn btn-primary">Dodaj</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="izmeni" tabindex="-1" aria-labelledby="izmeniLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni proizvod</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
+        <button type="button" class="btn btn-primary">Izmeni</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="obrisi" tabindex="-1" aria-labelledby="obrisiLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi prozivod</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
+        <button type="button" class="btn btn-primary">Obrisi</button>
+      </div>
+    </div>
+  </div>
+</div>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -45,6 +100,8 @@
       <th scope="col">Naziv</th>
       <th scope="col">Cena</th>
       <th scope="col">Popust</th>
+      <th scope="col">Imeni</th>
+      <th scope="col">Obrisi</th>
     </tr>
   </thead>
   <tbody>
@@ -53,18 +110,50 @@
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+           Izmeni 
+        </button>
+      </td>
+      <td>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+            Obrisi 
+      </button>
+      </td>
+      
+
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+           Izmeni 
+        </button>
+      </td>
+      <td>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+            Obrisi 
+      </button>
+      </td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+           Izmeni 
+        </button>
+      </td>
+      <td>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+            Obrisi 
+      </button>
+      </td>
     </tr>
   </tbody>
 </table>
