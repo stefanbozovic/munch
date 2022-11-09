@@ -9,7 +9,6 @@ $("#dodajAkcijeForm").submit(function (event) {
       json[name] = value;
       return json;
     }, {});
-    console.log(obj);
     $inputs.prop("disabled", true);
   
     request = $.ajax({
@@ -22,9 +21,9 @@ $("#dodajAkcijeForm").submit(function (event) {
       if (response === "Success") {
         alert("Akcija je dodata");
         $form[0].reset();//brisemo sve iz forme
-        $inputs.prop("disabled", false); //oslobodjavamo inpute 
+        $inputs.prop("disabled", false); //oslobodjamo inpute 
+        dodajRed(obj); 
       } else console.log("Akcija nije dodata " + response);
-      console.log(response);
     });
   
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -32,3 +31,24 @@ $("#dodajAkcijeForm").submit(function (event) {
     });
 });
 
+
+function dodajRed(obj) {
+  
+    $.get("handler/uzmiPoslednjuAkciju.php", function (data) {
+      $("#tabelaAkcija tbody").append(`
+        <tr>
+            <td>${data}</td>
+            <td>${obj.Naziv}</td>
+            <td>${obj.ProcenatPopusta}</td>
+            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+                    Izmeni 
+                </button>
+            </td>
+            <td> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                        Obrisi 
+                </button> 
+            </td>
+        </tr>
+      `);
+    });
+  }

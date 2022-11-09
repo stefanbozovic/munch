@@ -64,10 +64,6 @@ if ($result->num_rows == 0) {
       </div>
       <div class="modal-body">
         <div class="mb-3">
-            <label for="id" class="form-label">Id</label>
-            <input type="text" class="form-control" name="Id" id="id">
-        </div>
-        <div class="mb-3">
             <label for="naziv" class="form-label">Naziv</label>
             <input type="text" class="form-control" name="Naziv" id="naziv">
         </div>
@@ -118,7 +114,7 @@ if ($result->num_rows == 0) {
     </div>
   </div>
 </div>
-<table class="table table-hover">
+<table class="table table-hover" id="tabelaAkcija">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -134,15 +130,13 @@ if ($result->num_rows == 0) {
             <td><?php echo $red["akcija_id"] ?></td>
             <td><?php echo $red["naziv"] ?></td>
             <td><?php echo $red["procenat_popusta"] ?></td>
-            <td>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
                     Izmeni 
                 </button>
             </td>
-            <td>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-                        Obrisi 
-                </button>
+            <td> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                    Obrisi 
+                </button> 
             </td>
         </tr>
     <?php
