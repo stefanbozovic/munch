@@ -83,17 +83,34 @@ if ($result->num_rows == 0) {
 <div class="modal fade" id="izmeni" tabindex="-1" aria-labelledby="izmeniLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
+    <form action="#" method="post" id="izmeniAkcijeForm">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni proizvod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body izmeniovde">
-        
+        <h3 style="color: black">Izmena tima</h3>
+        <div class="row">
+            <div class="mb-3">
+                <label for="naziv" class="form-label">Id</label>
+                <input type="text" class="form-control" name="Id" id="id" readonly >
+            </div>
+            <div class="mb-3">
+                <label for="naziv" class="form-label">Naziv</label>
+                <input type="text" class="form-control" name="Naziv" id="naziv">
+            </div>
+            <div class="mb-3">
+                <label for="procenat_popusta" class="form-label">Procenat popusta</label>
+                <input type="text" class="form-control" name="ProcenatPopusta" id="procenat_popusta">
+            </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Izmeni</button>
+        <button id="btnIzmeni" type="submit" class="btn btn-success btn-block" style="color: white; background-color: orange; border: 1px solid white"><i class="glyphicon glyphicon-pencil"></i> Izmeni tim
+        </button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -120,17 +137,18 @@ if ($result->num_rows == 0) {
       <th scope="col">#</th>
       <th scope="col">Naziv</th>
       <th scope="col">Procenat popusta</th>
-      <th scope="col">Imeni</th>
+      <th scope="col">Izmeni</th>
       <th scope="col">Obrisi</th>
     </tr>
   </thead>
   <tbody>
       <?php  while ($red = $result->fetch_array()) { ?>
-        <tr>
+        <tr id="tr-<?php echo $red["akcija_id"] ?>">
             <td><?php echo $red["akcija_id"] ?></td>
             <td><?php echo $red["naziv"] ?></td>
             <td><?php echo $red["procenat_popusta"] ?></td>
-            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni" 
+            onclick="otvoriModalIzmeniSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
                     Izmeni 
                 </button>
             </td>

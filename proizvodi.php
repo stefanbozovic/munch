@@ -116,7 +116,7 @@ if ($result->num_rows == 0) {
       <th scope="col">Naziv</th>
       <th scope="col">Cena</th>
       <th scope="col">Popust</th>
-      <th scope="col">Imeni</th>
+      <th scope="col">Izmeni</th>
       <th scope="col">Obrisi</th>
     </tr>
   </thead>

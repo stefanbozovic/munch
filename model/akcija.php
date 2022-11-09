@@ -23,6 +23,11 @@ class Akcija
         $q = "INSERT INTO akcije( naziv, procenat_popusta) VALUES('$naziv', '$procenat_popusta')";
         return $conn->query($q);
     }
+    public static function izmeni($akcija_id, $naziv, $procenat_popusta, mysqli $conn)
+    {
+        $q = "UPDATE akcije set naziv='$naziv', procenat_popusta='$procenat_popusta' where akcija_id=$akcija_id";
+        return $conn->query($q);
+    }
     public static function uzmiPoslednju(mysqli $conn)
     {
         $q = "SELECT * FROM akcije ORDER BY akcija_id DESC LIMIT 1";
