@@ -28,6 +28,11 @@ class Akcija
         $q = "UPDATE akcije set naziv='$naziv', procenat_popusta='$procenat_popusta' where akcija_id=$akcija_id";
         return $conn->query($q);
     }
+    public static function obrisiPoIndeksu($akcija_id, mysqli $conn)
+    {
+        $q = "DELETE FROM akcije WHERE akcija_id=$akcija_id";
+        return $conn->query($q);
+    }
     public static function uzmiPoslednju(mysqli $conn)
     {
         $q = "SELECT * FROM akcije ORDER BY akcija_id DESC LIMIT 1";

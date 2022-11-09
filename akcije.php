@@ -89,11 +89,10 @@ if ($result->num_rows == 0) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body izmeniovde">
-        <h3 style="color: black">Izmena tima</h3>
         <div class="row">
             <div class="mb-3">
                 <label for="naziv" class="form-label">Id</label>
-                <input type="text" class="form-control" name="Id" id="id" readonly >
+                <input type="text" class="form-control bg-light" name="Id" id="id" readonly >
             </div>
             <div class="mb-3">
                 <label for="naziv" class="form-label">Naziv</label>
@@ -107,7 +106,7 @@ if ($result->num_rows == 0) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button id="btnIzmeni" type="submit" class="btn btn-success btn-block" style="color: white; background-color: orange; border: 1px solid white"><i class="glyphicon glyphicon-pencil"></i> Izmeni tim
+        <button id="btnIzmeni" type="submit" class="btn btn-success btn-block btn-warning"> Izmeni
         </button>
       </div>
     </form>
@@ -117,17 +116,33 @@ if ($result->num_rows == 0) {
 <div class="modal fade" id="obrisi" tabindex="-1" aria-labelledby="obrisiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
-      <div class="modal-header">
+    <form action="#" method="post" id="obrisiAkcijeForm"> 
+     <div class="modal-header">
         <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi prozivod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body obrisiovde">
-        ...
+        <div class="row">
+            <div class="mb-3">
+                <label for="naziv" class="form-label">Id</label>
+                <input type="text" class="form-control bg-light" name="Id" id="id" readonly >
+            </div>
+            <div class="mb-3">
+                <label for="naziv" class="form-label">Naziv</label>
+                <input type="text" class="form-control bg-light" name="Naziv" id="naziv" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="procenat_popusta" class="form-label">Procenat popusta</label>
+                <input type="text" class="form-control bg-light" name="ProcenatPopusta" id="procenat_popusta" readonly>
+            </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Obrisi</button>
+        <button id="btnObrisi" type="submit" class="btn btn-success btn-block btn-danger" >Obrisi
+        </button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -142,17 +157,18 @@ if ($result->num_rows == 0) {
     </tr>
   </thead>
   <tbody>
-      <?php  while ($red = $result->fetch_array()) { ?>
+      <?php while ($red = $result->fetch_array()) { ?>
         <tr id="tr-<?php echo $red["akcija_id"] ?>">
             <td><?php echo $red["akcija_id"] ?></td>
             <td><?php echo $red["naziv"] ?></td>
             <td><?php echo $red["procenat_popusta"] ?></td>
             <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni" 
-            onclick="otvoriModalIzmeniSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
+                onclick="otvoriModalIzmeniSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
                     Izmeni 
                 </button>
             </td>
-            <td> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi"
+                onclick="otvoriModalObrisiSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
                     Obrisi 
                 </button> 
             </td>

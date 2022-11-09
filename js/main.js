@@ -1,3 +1,4 @@
+//DODAVANJE AKCIJA
 $("#dodajAkcijeForm").submit(function (event) {
     event.preventDefault();
     const $form = $(this);
@@ -51,6 +52,7 @@ function dodajRed(obj) {
     });
   };
 
+//IZMENA AKCIJA
 function otvoriModalIzmeniSaPodacima(i,n,p){
   $("#izmeni").find("#id")[0].value = i;
   $("#izmeni").find("#naziv")[0].value = n;
@@ -76,7 +78,6 @@ $("#izmeniAkcijeForm").submit(function (event) {
     data: serializedData,
   });
 
-
   request.done(function (response, textStatus, jqXHR) {
     if (response === "Success") {
       alert("Akcija je izmenjena");
@@ -97,3 +98,47 @@ function izmeniRed(obj) {
   tds[1].textContent = obj.Naziv;
   tds[2].textContent = obj.ProcenatPopusta;
 }
+
+
+//BRISANJE AKCIJA
+function otvoriModalObrisiSaPodacima(i,n,p){
+  $("#obrisi").find("#id")[0].value = i;
+  $("#obrisi").find("#naziv")[0].value = n;
+  $("#obrisi").find("#procenat_popusta")[0].value = p;
+};
+
+$("#obrisiAkcijeForm").submit(function (event) {
+  event.preventDefault();
+  const $form = $(this);
+
+  const $inputs = $form.find("input");
+  const serializedData = $form.serialize();
+
+  let obj = $form.serializeArray().reduce(function (json, { name, value }) {
+    json[name] = value;
+    return json;
+  }, {});
+  $inputs.prop("disabled", true);
+
+  request = $.ajax({
+    url: "handler/obrisiAkciju.php",
+    type: "post",
+    data: serializedData,
+  });
+
+  request.done(function (response, textStatus, jqXHR) {
+    if (response === "Success") {
+      alert("Akcija je obrisana");
+      //obrisiRed(obj); 
+      $("#obrisi").modal("toggle");
+    } else 
+    {
+      alert("Akcija ne moze biti obrisana zbog ogranicenja akcija_fk");
+      
+    }
+  });
+
+  request.fail(function (jqXHR, textStatus, errorThrown) {
+    console.error("Nastala je sledeca greska: " + textStatus, errorThrown);
+  });
+});
