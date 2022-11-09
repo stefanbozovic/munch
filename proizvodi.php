@@ -61,61 +61,115 @@ if ($result->num_rows == 0) {
 <div class="modal fade" id="dodaj" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
-      <div class="modal-header">
+    <form action="#" method="post" id="dodajProizvodeForm">
+        <div class="modal-header">
         <h1 class="modal-title fs-5" id="dodajLabel">Dodaj novi proizvod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="mb-3">
+            <label for="naziv" class="form-label">Naziv</label>
+            <input type="text" class="form-control" name="Naziv" id="naziv">
+        </div>
+        <div class="mb-3">
+            <label for="cena" class="form-label">Cena</label>
+            <input type="text" class="form-control" name="Cena" id="cena">
+        </div>
+        <div class="mb-3">
+            <label for="akcija" class="form-label">Akcija(id)</label>
+            <input type="text" class="form-control" name="Akcija" id="akcija">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Dodaj</button>
+        <button  id="btnDodajP"  type="submit" class="btn btn-primary">Dodaj</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
-<div class="modal fade" id="izmeni" tabindex="-1" aria-labelledby="izmeniLabel" aria-hidden="true">
+<div class="modal fade" id="izmeniProizvod" tabindex="-1" aria-labelledby="izmeniLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni proizvod</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Izmeni</button>
-      </div>
+      <form action="#" method="post" id="izmeniProizvodeForm">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni proizvod</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body izmeniovde">
+          <div class="row">
+              <div class="mb-3">
+                  <label for="naziv" class="form-label">Id</label>
+                  <input type="text" class="form-control bg-light" name="Id" id="id" readonly >
+              </div>
+              <div class="mb-3">
+                  <label for="naziv" class="form-label">Naziv</label>
+                  <input type="text" class="form-control" name="Naziv" id="naziv">
+              </div>
+              <div class="mb-3">
+                  <label for="cena" class="form-label">Cena</label>
+                  <input type="text" class="form-control" name="Cena" id="cena">
+              </div>
+              <div class="mb-3">
+                  <label for="akcija" class="form-label">Akcija</label>
+                  <input type="text" class="form-control" name="Akcija" id="akcija">
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
+          <button id="btnIzmeniP" type="submit" class="btn btn-success btn-block btn-warning"> Izmeni
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-<div class="modal fade" id="obrisi" tabindex="-1" aria-labelledby="obrisiLabel" aria-hidden="true">
+<div class="modal fade" id="obrisiProizvod" tabindex="-1" aria-labelledby="obrisiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi prozivod</h1>
+    <form action="#" method="post" id="obrisiProizvodeForm"> 
+     <div class="modal-header">
+        <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi proizvod</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body obrisiovde">
+        <div class="row">
+          <div class="mb-3">
+              <label for="naziv" class="form-label">Id</label>
+              <input type="text" class="form-control bg-light" name="Id" id="id" readonly >
+          </div>
+          <div class="mb-3">
+              <label for="naziv" class="form-label">Naziv</label>
+              <input type="text" class="form-control bg-light" name="Naziv" id="naziv" readonly>
+          </div>
+          <div class="mb-3">
+              <label for="cena" class="form-label">Cena</label>
+              <input type="text" class="form-control bg-light" name="Cena" id="cena" readonly>
+          </div>
+          <div class="mb-3">
+              <label for="akcija" class="form-label">Akcija</label>
+              <input type="text" class="form-control bg-light" name="Akcija" id="akcija" readonly>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Obrisi</button>
+        <button id="btnObrisiP" type="submit" class="btn btn-success btn-block btn-danger" >Obrisi
+        </button>
       </div>
+    </form>
     </div>
   </div>
 </div>
-<table class="table table-hover">
+<table id="tabelaProizvoda" class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Naziv</th>
       <th scope="col">Cena</th>
-      <th scope="col">Popust</th>
+      <th scope="col">Akcija i popust</th>
+      <th scope="col">Cena sa popustom</th>
       <th scope="col">Izmeni</th>
       <th scope="col">Obrisi</th>
     </tr>
@@ -124,16 +178,19 @@ if ($result->num_rows == 0) {
     <?php  while ($red = $result->fetch_array()) { ?>
         <tr>
             <td><?php echo $red["proizvod_id"] ?></td>
-            <td><?php echo $red["naziv"] ?></td>
-            <td><?php echo $red["cena"] ?></td>
-            <td><?php echo $red["akcija_id"] ?></td>
+            <td><?php echo $red["naziv_proizvoda"] ?></td>
+            <td><?php echo $red["cena"] ?> din</td>
+            <td><?php echo $red["naziv"]." (". $red["procenat_popusta"]."%)"?></td>
+            <td><?php echo $red["cena"]*(1-$red["procenat_popusta"]/100)?> din</td>
             <td>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeniProizvod"
+                        onclick="otvoriIzmeniProizvodSaPodacima(<?php echo $red["proizvod_id"] ?>,'<?php echo $red["naziv_proizvoda"] ?>',<?php echo $red["cena"] ?>,<?php echo $red["akcija_id"] ?>)">
                     Izmeni 
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisiProizvod"
+                onclick="otvoriObrisiProizvodSaPodacima(<?php echo $red["proizvod_id"] ?>,'<?php echo $red["naziv_proizvoda"] ?>',<?php echo $red["cena"] ?>,<?php echo $red["akcija_id"] ?>)">
                     Obrisi 
                 </button>
            </td>
@@ -143,5 +200,8 @@ if ($result->num_rows == 0) {
   </tbody>
 </table>
     
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -59,7 +59,7 @@ if ($result->num_rows == 0) {
     <div class="modal-content">
       <form  action="#" method="post" id="dodajAkcijeForm">
         <div class="modal-header">
-        <h1 class="modal-title fs-5" id="dodajLabel">Dodaj novi proizvod</h1>
+        <h1 class="modal-title fs-5" id="dodajLabel">Dodaj novu akciju</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -85,7 +85,7 @@ if ($result->num_rows == 0) {
     <div class="modal-content">
     <form action="#" method="post" id="izmeniAkcijeForm">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni proizvod</h1>
+        <h1 class="modal-title fs-5" id="izmeniLabel">Izmeni akciju</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body izmeniovde">
@@ -118,7 +118,7 @@ if ($result->num_rows == 0) {
     <div class="modal-content">
     <form action="#" method="post" id="obrisiAkcijeForm"> 
      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi prozivod</h1>
+        <h1 class="modal-title fs-5" id="obrisiLabel">Obrisi akciju</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body obrisiovde">
