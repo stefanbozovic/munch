@@ -2,6 +2,7 @@
 
 require "dbBroker.php";
 require "model/proizvod.php";
+require "model/akcija.php";
 session_start();
 
 $result = Proizvod::ucitaj($conn);
@@ -11,6 +12,27 @@ if (!$result) {
 }
 if ($result->num_rows == 0) {
     echo "Nema upisanih proizvoda";
+    die();
+}
+
+$resultAkcija = Akcija::ucitaj($conn);
+if (!$resultAkcija) {
+    echo "Greska kod upita<br>";
+    die();
+}
+if ($resultAkcija->num_rows == 0) {
+    echo "Nema upisanih akcija";
+    die();
+}
+
+
+$resultAkcija2 = Akcija::ucitaj($conn);
+if (!$resultAkcija2) {
+    echo "Greska kod upita<br>";
+    die();
+}
+if ($resultAkcija2->num_rows == 0) {
+    echo "Nema upisanih akcija";
     die();
 }
 ?>
@@ -77,7 +99,13 @@ if ($result->num_rows == 0) {
         </div>
         <div class="mb-3">
             <label for="akcija" class="form-label">Akcija(id)</label>
-            <input type="text" class="form-control" name="Akcija" id="akcija">
+            <select class="form-select" aria-label="Default select example" name="Akcija" id="akcija">
+              <option selected>Izaberi vrstu akcije:</option>
+              <?php while ($red = $resultAkcija->fetch_array()) { ?>
+                <option value="<?php echo $red["akcija_id"] ?>"><?php echo $red["naziv"] ?> <?php echo $red["procenat_popusta"] ?></option>
+              <?php
+              } ?>
+            </select>
         </div>
       </div>
       <div class="modal-footer">
@@ -110,9 +138,17 @@ if ($result->num_rows == 0) {
                   <label for="cena" class="form-label">Cena</label>
                   <input type="text" class="form-control" name="Cena" id="cena">
               </div>
+             
               <div class="mb-3">
-                  <label for="akcija" class="form-label">Akcija</label>
-                  <input type="text" class="form-control" name="Akcija" id="akcija">
+                  <label for="akcija" class="form-label">Akcija(id)</label>
+                  <select class="form-select" aria-label="Default select example" name="Akcija" id="akcija">
+                    <option>Izaberi vrstu akcije:</option>
+                   
+                    <?php while ($red = $resultAkcija2->fetch_array()) { ?>
+                      <option value="<?php echo $red["akcija_id"] ?>"><?php echo $red["naziv"] ?> <?php echo $red["procenat_popusta"] ?></option>
+                    <?php
+                    } ?>
+                  </select>
               </div>
           </div>
         </div>
@@ -175,7 +211,7 @@ if ($result->num_rows == 0) {
     </tr>
   </thead>
   <tbody>
-    <?php  while ($red = $result->fetch_array()) { ?>
+    <?php while ($red = $result->fetch_array()) { ?>
         <tr>
             <td><?php echo $red["proizvod_id"] ?></td>
             <td><?php echo $red["naziv_proizvoda"] ?></td>

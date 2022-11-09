@@ -195,11 +195,10 @@ function otvoriIzmeniProizvodSaPodacima(i,n,c,a){
   $("#izmeniProizvod").find("#id")[0].value = i;
   $("#izmeniProizvod").find("#naziv")[0].value = n;
   $("#izmeniProizvod").find("#cena")[0].value = c;
-  $("#izmeniProizvod").find("#akcija")[0].value = a;
+  $("#izmeniProizvod").find("#akcija")[0].value=a;
 };
 
 $("#izmeniProizvodeForm").submit(function (event) {
-  
   event.preventDefault();
   const $form = $(this);
 
