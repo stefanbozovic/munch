@@ -23,7 +23,7 @@ $("#dodajAkcijeForm").submit(function (event) {
         alert("Akcija je dodata");
         $form[0].reset();//brisemo sve iz forme
         $inputs.prop("disabled", false); //oslobodjamo inpute 
-        dodajRedAkcije(obj); 
+        osveziRedoveAkcije(obj); 
       } else console.log("Akcija nije dodata " + response);
     });
   
@@ -52,13 +52,13 @@ function dodajRedAkcije(obj) {
   });
 };
 function osveziRedoveAkcije(obj) {
-  $("#tabelaAkcija").empty();
+  $("#tabelaAkcija tbody").empty();
   $.ajax({
     type:"GET",
     url:"handler/prikaziAkcije.php",
     dataType: "html",
     success: function (data){
-      $("#tabelaAkcija").html(data);
+      $("#tabelaAkcija tbody").html(data);
     }
   })
 };
@@ -94,7 +94,7 @@ $("#izmeniAkcijeForm").submit(function (event) {
       alert("Akcija je izmenjena");
       $form[0].reset();//brisemo sve iz forme
       $inputs.prop("disabled", false); //oslobodjamo inpute 
-      izmeniRed(obj); 
+      osveziRedoveAkcije(obj); 
       $("#izmeni").modal("toggle");
     } else console.log("Akcija nije izmenjena " + response);
   });
@@ -140,7 +140,7 @@ $("#obrisiAkcijeForm").submit(function (event) {
   request.done(function (response, textStatus, jqXHR) {
     if (response === "Success") {
       alert("Akcija je obrisana");
-      //obrisiRed(obj); 
+      osveziRedoveAkcije(obj); 
       $("#obrisi").modal("toggle");
     } else 
     {
@@ -190,13 +190,13 @@ $("#dodajProizvodeForm").submit(function (event) {
 });
 
 function osveziRedoveProizvoda(obj) {
-  $("#tabelaProizvoda").empty();
+  $("#tabelaProizvoda tbody").empty();
   $.ajax({
     type:"GET",
     url:"handler/prikaziProizvode.php",
     dataType: "html",
     success: function (data){
-      $("#tabelaProizvoda").html(data);
+      $("#tabelaProizvoda tbody").html(data);
     }
   })
 };

@@ -5,3 +5,6 @@
 .nav-link.active{
     text-shadow: 0 0 black;
 }
+.pretaziborder{
+    border: 1px solid #ced4da !important;
+}

@@ -52,18 +52,19 @@ if ($result->num_rows == 0) {
   </div>
 </nav>
 <div class="container-md">
-  <div class="d-flex justify-content-between  mb-4 mt-4">  
+  <div class="d-flex justify-content-between  mb-5 mt-5">  
     <h1>Akcije</h1>
     <div class="input-group flex-nowrap w-250">
       <span class="input-group-text" id="addon-wrapping">
       <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>
       </span>
-      <input type="text" id="myInput" class="btn bg-light border border-secondary" placeholder="Pretrazi akcije" aria-describedby="addon-wrapping" onkeyup="pretraziAkcije()">
+      <input type="text" id="myInput" class="btn bg-light border pretaziborder" placeholder="Pretrazi akcije" aria-describedby="addon-wrapping" onkeyup="pretraziAkcije()">
     </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dodaj">
       Dodaj novu akciju
     </button>
   </div>
+  
   <div class="modal fade" id="dodaj" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
       <div class="modal-content">
@@ -156,7 +157,12 @@ if ($result->num_rows == 0) {
       </div>
     </div>
   </div>
-  <table class="table table-hover" id="tabelaAkcija">
+  
+  <p class="text-muted">
+    <span class="badge rounded-pill text-bg-secondary">?</span>
+    Klikom na polje tabele mozete izvrsiti sortiranje.
+  </p>
+  <table class="table table-hover sortable" id="tabelaAkcija">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -189,6 +195,7 @@ if ($result->num_rows == 0) {
   </table>
 </div>   
 
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/main.js"></script>
 </body>
