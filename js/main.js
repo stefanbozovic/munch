@@ -33,25 +33,36 @@ $("#dodajAkcijeForm").submit(function (event) {
 });
 
 function dodajRedAkcije(obj) {
-    $.get("handler/uzmiPoslednjuAkciju.php", function (data) {
-      $("#tabelaAkcija tbody").append(`
-        <tr>
-            <td>${data}</td>
-            <td>${obj.Naziv}</td>
-            <td>${obj.ProcenatPopusta}</td>
-            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-                    Izmeni 
-                </button>
-            </td>
-            <td> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-                        Obrisi 
-                </button> 
-            </td>
-        </tr>
-      `);
-    });
-  };
-
+  $.get("handler/uzmiPoslednjuAkciju.php", function (data) {
+    $("#tabelaAkcija tbody").append(`
+      <tr>
+          <td>${data}</td>
+          <td>${obj.Naziv}</td>
+          <td>${obj.ProcenatPopusta}</td>
+          <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
+                  Izmeni 
+              </button>
+          </td>
+          <td> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
+                      Obrisi 
+              </button> 
+          </td>
+      </tr>
+    `);
+  });
+};
+function osveziRedoveAkcije(obj) {
+  $("#tabelaAkcija").empty();
+  $.ajax({
+    type:"GET",
+    url:"handler/prikaziAkcije.php",
+    dataType: "html",
+    success: function (data){
+      $("#tabelaAkcija").html(data);
+    }
+  })
+};
+  
 //IZMENA AKCIJA
 function otvoriModalIzmeniSaPodacima(i,n,p){
   $("#izmeni").find("#id")[0].value = i;
@@ -274,3 +285,64 @@ $("#obrisiProizvodeForm").submit(function (event) {
     console.error("Nastala je sledeca greska: " + textStatus, errorThrown);
   });
 });
+
+
+function pretraziAkcije() {
+  var input, filter, table, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tabelaAkcija");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+      td1 = tr[i].getElementsByTagName("td")[1];
+      td2 = tr[i].getElementsByTagName("td")[2];
+      td3 = tr[i].getElementsByTagName("td")[3];
+      td4 = tr[i].getElementsByTagName("td")[4];
+
+      if (td1 || td2 || td3 || td4) {
+          txtValue1 = td1.textContent || td1.innerText;
+          txtValue2 = td2.textContent || td2.innerText;
+          txtValue3 = td3.textContent || td3.innerText;
+          txtValue4 = td4.textContent || td4.innerText;
+
+          if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 ||
+              txtValue3.toUpperCase().indexOf(filter) > -1 || txtValue4.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+          } else {
+              tr[i].style.display = "none";
+          }
+      }
+  }
+}
+
+function pretraziProizvode() {
+  var input, filter, table, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tabelaProizvoda");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+      td1 = tr[i].getElementsByTagName("td")[1];
+      td2 = tr[i].getElementsByTagName("td")[2];
+      td3 = tr[i].getElementsByTagName("td")[3];
+      td4 = tr[i].getElementsByTagName("td")[4];
+
+      if (td1 || td2 || td3 || td4) {
+          txtValue1 = td1.textContent || td1.innerText;
+          txtValue2 = td2.textContent || td2.innerText;
+          txtValue3 = td3.textContent || td3.innerText;
+          txtValue4 = td4.textContent || td4.innerText;
+
+          if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 ||
+              txtValue3.toUpperCase().indexOf(filter) > -1 || txtValue4.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+          } else {
+              tr[i].style.display = "none";
+          }
+      }
+  }
+}
+
+

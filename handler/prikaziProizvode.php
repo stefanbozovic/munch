@@ -36,12 +36,14 @@ if ($result->num_rows == 0) {
             <td><?php echo $red["naziv"]." (". $red["procenat_popusta"]."%)"?></td>
             <td><?php echo $red["cena"]*(1-$red["procenat_popusta"]/100)?> din</td>
             <td>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeniProizvod">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeniProizvod"
+                        onclick="otvoriIzmeniProizvodSaPodacima(<?php echo $red["proizvod_id"] ?>,'<?php echo $red["naziv_proizvoda"] ?>',<?php echo $red["cena"] ?>,<?php echo $red["akcija_id"] ?>)">
                     Izmeni 
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisiProizvod">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisiProizvod"
+                onclick="otvoriObrisiProizvodSaPodacima(<?php echo $red["proizvod_id"] ?>,'<?php echo $red["naziv_proizvoda"] ?>',<?php echo $red["cena"] ?>,<?php echo $red["akcija_id"] ?>)">
                     Obrisi 
                 </button>
            </td>
