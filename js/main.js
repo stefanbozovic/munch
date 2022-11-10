@@ -345,4 +345,35 @@ function pretraziProizvode() {
   }
 }
 
+var zutoActive=0;
+$( document ).ready(function() {
+  zutoJeUkljuceno(document.getElementById("ZutoVrednost").innerHTML);
+});
 
+function zutoJeUkljuceno(defaultno){
+  
+  console.log(defaultno);
+  if(defaultno==1){
+    zutoActive=0;
+    $('.btn-zuto')[0].click();
+  }
+  else{
+    zutoActive=0;
+    $('body').css({'background-color': 'white '});
+  }
+}
+function zutoSvetlo(){
+  if(zutoActive==1){//ako je ukljuceno iskljuci
+    $('body').css({'background-color': 'white '});
+    zutoActive=0;
+    document.cookie = "zuto=0";
+    console.log(document.cookie);
+  } 
+  else{//ako je iskljuceno ukljuci
+    $('body').css({'background-color': '#fff7e5'});
+    zutoActive=1;
+    document.cookie = "zuto=1";
+    console.log(document.cookie);
+    
+  }
+}

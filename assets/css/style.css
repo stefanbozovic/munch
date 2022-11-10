@@ -8,3 +8,19 @@
 .pretaziborder{
     border: 1px solid #ced4da !important;
 }
+
+.btn-zuto.active{
+    background:#ffe2a4;
+    border: 1px solid #ffe2a4;
+}
+.btn-zuto{
+    background:#ffffff;
+    border: 1px solid #ffffff;
+}
+.btn-zuto:hover{
+    background:#ffce64;
+    border: 1px solid #ffe2a4;
+}
+#ZutoVrednost{
+    display: none !important;
+}

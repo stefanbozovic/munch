@@ -1,8 +1,17 @@
+
 <?php
 
 require "dbBroker.php";
 require "model/akcija.php";
 session_start();
+
+if (isset($_COOKIE['zuto'])){
+  echo "<h2 id='ZutoVrednost'>" . $_COOKIE['zuto'] . "</h2>";
+}
+else{
+  setcookie("zuto", 0);
+  echo "<h2>Cookie is now set to zuto 0 </h2>";
+}
 
 $result = Akcija::ucitaj($conn);
 if (!$result) {
@@ -21,14 +30,12 @@ if ($result->num_rows == 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Munchmallow</title>
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-light mb-3">
+<nav class="navbar navbar-expand-lg mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="index.php"> 
       <img class="munchlogo" src="assets/images/munchmallow_logo.png" alt="logo proizvoda Munchmallow">
@@ -47,6 +54,8 @@ if ($result->num_rows == 0) {
         <li class="nav-item">
           <a class="nav-link" href="proizvodi.php">Proizvodi</a>
         </li> 
+        <button type="button" id="btn-zuto" class="btn btn-zuto" data-bs-toggle="button" autocomplete="off" aria-pressed="true" onclick="zutoSvetlo();"> 
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z"/></svg>        </button>
       </ul>
     </div>
   </div>
@@ -160,7 +169,7 @@ if ($result->num_rows == 0) {
   
   <p class="text-muted">
     <span class="badge rounded-pill text-bg-secondary">?</span>
-    Klikom na polje tabele mozete izvrsiti sortiranje.
+    Klikom na naziv kolone mozete izvrsiti sortiranje.
   </p>
   <table class="table table-hover sortable" id="tabelaAkcija">
     <thead>
@@ -194,9 +203,11 @@ if ($result->num_rows == 0) {
     </tbody>
   </table>
 </div>   
-
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>

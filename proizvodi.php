@@ -50,7 +50,7 @@ if ($resultAkcija2->num_rows == 0) {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-light mb-3 ">
+<nav class="navbar navbar-expand-lg mb-3 ">
   <div class="container-md ">
     <a class="navbar-brand" href="index.php"> 
         <img class="munchlogo" src="assets/images/munchmallow_logo.png" alt="logo proizvoda Munchmallow">
@@ -210,7 +210,7 @@ if ($resultAkcija2->num_rows == 0) {
 
   <p class="text-muted">
     <span class="badge rounded-pill text-bg-secondary">?</span>
-    Klikom na polje tabele mozete izvrsiti sortiranje.
+    Klikom na naziv kolone mozete izvrsiti sortiranje.
   </p>
   <table id="tabelaProizvoda" class="table table-hover sortable">
     <thead>
