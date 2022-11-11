@@ -5,7 +5,7 @@ session_start();
 
 $result = Akcija::ucitaj($conn);
 if (!$result) {
-    echo "Greska kod upita<br>";
+    echo "Greška kod upita<br>";
     die();
 }
 if ($result->num_rows == 0) {
@@ -27,7 +27,7 @@ if ($result->num_rows == 0) {
         </td>
         <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi"
             onclick="otvoriModalObrisiSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
-                Obrisi 
+                Obriši 
             </button> 
         </td>
     </tr>

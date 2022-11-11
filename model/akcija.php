@@ -37,7 +37,6 @@ class Akcija
     {
         $q = "SELECT * FROM akcije ORDER BY akcija_id DESC LIMIT 1";
         return $conn->query($q);
-    }
-
+    } 
 }
 ?>

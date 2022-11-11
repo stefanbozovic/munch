@@ -100,7 +100,7 @@ $("#izmeniAkcijeForm").submit(function (event) {
   });
 
   request.fail(function (jqXHR, textStatus, errorThrown) {
-    console.error("Nastala je sledeca greska: " + textStatus, errorThrown);
+    console.error("Nastala je sledeća greška: " + textStatus, errorThrown);
   });
 });
 
@@ -144,13 +144,13 @@ $("#obrisiAkcijeForm").submit(function (event) {
       $("#obrisi").modal("toggle");
     } else 
     {
-      alert("Akcija ne moze biti obrisana zbog ogranicenja akcija_fk");
+      alert("Akcija ne može biti obrisana zbog ograničenja: akcija_fk");
       
     }
   });
 
   request.fail(function (jqXHR, textStatus, errorThrown) {
-    console.error("Nastala je sledeca greska: " + textStatus, errorThrown);
+    console.error("Nastala je sledeća greška " + textStatus, errorThrown);
   });
 });
 
@@ -185,7 +185,7 @@ $("#dodajProizvodeForm").submit(function (event) {
   });
 
   request.fail(function (jqXHR, textStatus, errorThrown) {
-    console.error("Nastala je sledeca greska: " + textStatus, errorThrown);
+    console.error("Nastala je sledeća greška: " + textStatus, errorThrown);
   });
 });
 
@@ -238,7 +238,7 @@ $("#izmeniProizvodeForm").submit(function (event) {
   });
 
   request.fail(function (jqXHR, textStatus, errorThrown) {
-    console.error("Nastala je sledeca greska: " + textStatus, errorThrown);
+    console.error("Nastala je sledeća greška: " + textStatus, errorThrown);
   });
 });
 
@@ -277,7 +277,7 @@ $("#obrisiProizvodeForm").submit(function (event) {
       $("#obrisiProizvod").modal("toggle");
     } else 
     {
-      alert("Proizvod ne moze biti obrisan");
+      alert("Proizvod ne može biti obrisan");
     }
   });
 
@@ -288,11 +288,11 @@ $("#obrisiProizvodeForm").submit(function (event) {
 
 
 function pretraziAkcije() {
-  var input, filter, table, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tabelaAkcija");
-  tr = table.getElementsByTagName("tr");
+  var inputA, filterA, tableA, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
+  inputA = document.getElementById("myInputA");
+  filterA = inputA.value.toUpperCase();
+  tableA = document.getElementById("tabelaAkcija");
+  tr = tableA.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
       td1 = tr[i].getElementsByTagName("td")[1];
@@ -306,8 +306,8 @@ function pretraziAkcije() {
           txtValue3 = td3.textContent || td3.innerText;
           txtValue4 = td4.textContent || td4.innerText;
 
-          if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 ||
-              txtValue3.toUpperCase().indexOf(filter) > -1 || txtValue4.toUpperCase().indexOf(filter) > -1) {
+          if (txtValue1.toUpperCase().indexOf(filterA) > -1 || txtValue2.toUpperCase().indexOf(filterA) > -1 ||
+              txtValue3.toUpperCase().indexOf(filterA) > -1 || txtValue4.toUpperCase().indexOf(filterA) > -1) {
               tr[i].style.display = "";
           } else {
               tr[i].style.display = "none";
@@ -317,11 +317,11 @@ function pretraziAkcije() {
 }
 
 function pretraziProizvode() {
-  var input, filter, table, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tabelaProizvoda");
-  tr = table.getElementsByTagName("tr");
+  var inputP, filterP, tableP, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
+  inputP = document.getElementById("myInputP");
+  filterP = inputP.value.toUpperCase();
+  tableP = document.getElementById("tabelaProizvoda");
+  tr = tableP.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
       td1 = tr[i].getElementsByTagName("td")[1];
@@ -335,8 +335,8 @@ function pretraziProizvode() {
           txtValue3 = td3.textContent || td3.innerText;
           txtValue4 = td4.textContent || td4.innerText;
 
-          if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 ||
-              txtValue3.toUpperCase().indexOf(filter) > -1 || txtValue4.toUpperCase().indexOf(filter) > -1) {
+          if (txtValue1.toUpperCase().indexOf(filterP) > -1 || txtValue2.toUpperCase().indexOf(filterP) > -1 ||
+              txtValue3.toUpperCase().indexOf(filterP) > -1 || txtValue4.toUpperCase().indexOf(filterP) > -1) {
               tr[i].style.display = "";
           } else {
               tr[i].style.display = "none";
@@ -351,29 +351,27 @@ $( document ).ready(function() {
 });
 
 function zutoJeUkljuceno(defaultno){
-  
-  console.log(defaultno);
   if(defaultno==1){
     zutoActive=0;
     $('.btn-zuto')[0].click();
   }
   else{
     zutoActive=0;
-    $('body').css({'background-color': 'white '});
+    $('body').css({'background-color': '#e6f7fe '});
   }
 }
 function zutoSvetlo(){
   if(zutoActive==1){//ako je ukljuceno iskljuci
-    $('body').css({'background-color': 'white '});
+    $('body').css({'background-color': '#e6f7fe '});
     zutoActive=0;
     document.cookie = "zuto=0";
-    console.log(document.cookie);
+    $('.btn-zuto').toggleClass("active");
   } 
   else{//ako je iskljuceno ukljuci
     $('body').css({'background-color': '#fff7e5'});
     zutoActive=1;
     document.cookie = "zuto=1";
-    console.log(document.cookie);
+    $('.btn-zuto').toggleClass("active");
     
   }
 }

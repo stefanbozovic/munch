@@ -1,3 +1,6 @@
+body{
+    background-color: #e6f7fe;
+}
 .w-250{
     width: 250px;
 }
@@ -24,3 +27,33 @@
 #ZutoVrednost{
     display: none !important;
 }
+.card-foot{
+    min-height: 200px !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: white;
+}
+.malekartice{
+    min-height: 200px !important;
+}
+.velikekartice{
+    min-height: 250px !important;
+}
+.velikekartice .card-title{
+    font-size: 2.25rem;
+}
+
+.navbar {
+     border-style:none !important;
+}
+.mobileresponsive{
+    margin: auto;
+    padding-left: 26px;
+    padding-right: 28px;
+}
+@media only screen and (max-width: 990px) {
+    .zutoresponsive{
+        width: 50px;
+        margin: 0 43vw;
+    }
+  }

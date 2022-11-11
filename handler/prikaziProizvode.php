@@ -6,7 +6,7 @@ session_start();
 
 $result = Proizvod::ucitaj($conn);
 if (!$result) {
-    echo "Greska kod upita<br>";
+    echo "Greška kod upita<br>";
     die();
 }
 if ($result->num_rows == 0) {
@@ -32,7 +32,7 @@ if ($result->num_rows == 0) {
         <td>
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisiProizvod"
             onclick="otvoriObrisiProizvodSaPodacima(<?php echo $red["proizvod_id"] ?>,'<?php echo $red["naziv_proizvoda"] ?>',<?php echo $red["cena"] ?>,<?php echo $red["akcija_id"] ?>)">
-                Obrisi 
+                Obriši 
             </button>
         </td>
     </tr>
