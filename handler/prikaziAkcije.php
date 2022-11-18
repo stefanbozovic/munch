@@ -2,7 +2,6 @@
 require "../dbBroker.php";
 require "../model/akcija.php";
 session_start();
-
 $result = Akcija::ucitaj($conn);
 if (!$result) {
     echo "Greška kod upita<br>";
@@ -12,9 +11,7 @@ if ($result->num_rows == 0) {
     echo "Nema upisanih akcija";
     die();
 }
-
 ?>
-
 <?php  while ($red = $result->fetch_array()) { ?>
     <tr id="tr-<?php echo $red["akcija_id"] ?>">
         <td><?php echo $red["akcija_id"] ?></td>

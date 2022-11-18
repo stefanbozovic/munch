@@ -23,7 +23,7 @@ $("#dodajAkcijeForm").submit(function (event) {
         alert("Akcija je dodata");
         $form[0].reset();//brisemo sve iz forme
         $inputs.prop("disabled", false); //oslobodjamo inpute 
-        osveziRedoveAkcije(obj); 
+        osveziRedoveAkcije(); 
       } else console.log("Akcija nije dodata " + response);
     });
   
@@ -32,26 +32,7 @@ $("#dodajAkcijeForm").submit(function (event) {
     });
 });
 
-function dodajRedAkcije(obj) {
-  $.get("handler/uzmiPoslednjuAkciju.php", function (data) {
-    $("#tabelaAkcija tbody").append(`
-      <tr>
-          <td>${data}</td>
-          <td>${obj.Naziv}</td>
-          <td>${obj.ProcenatPopusta}</td>
-          <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni">
-                  Izmeni 
-              </button>
-          </td>
-          <td> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi">
-                      Obrisi 
-              </button> 
-          </td>
-      </tr>
-    `);
-  });
-};
-function osveziRedoveAkcije(obj) {
+function osveziRedoveAkcije() {
   $("#tabelaAkcija tbody").empty();
   $.ajax({
     type:"GET",
@@ -64,7 +45,7 @@ function osveziRedoveAkcije(obj) {
 };
   
 //IZMENA AKCIJA
-function otvoriModalIzmeniSaPodacima(i,n,p){
+function otvoriIzmeniAkcijuSaPodacima(i,n,p){
   $("#izmeni").find("#id")[0].value = i;
   $("#izmeni").find("#naziv")[0].value = n;
   $("#izmeni").find("#procenat_popusta")[0].value = p;
@@ -112,7 +93,7 @@ function izmeniRed(obj) {
 
 
 //BRISANJE AKCIJA
-function otvoriModalObrisiSaPodacima(i,n,p){
+function otvoriObrisiAkcijuSaPodacima(i,n,p){
   $("#obrisi").find("#id")[0].value = i;
   $("#obrisi").find("#naziv")[0].value = n;
   $("#obrisi").find("#procenat_popusta")[0].value = p;
@@ -130,13 +111,11 @@ $("#obrisiAkcijeForm").submit(function (event) {
     return json;
   }, {});
   $inputs.prop("disabled", true);
-
   request = $.ajax({
     url: "handler/obrisiAkciju.php",
     type: "post",
     data: serializedData,
   });
-
   request.done(function (response, textStatus, jqXHR) {
     if (response === "Success") {
       alert("Akcija je obrisana");
@@ -148,7 +127,6 @@ $("#obrisiAkcijeForm").submit(function (event) {
       
     }
   });
-
   request.fail(function (jqXHR, textStatus, errorThrown) {
     console.error("Nastala je sledeća greška " + textStatus, errorThrown);
   });

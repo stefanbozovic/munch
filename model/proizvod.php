@@ -35,7 +35,7 @@ class Proizvod
     }
     public static function uzmiPoslednji(mysqli $conn)
     {
-        $q = "SELECT * FROM proizvodi ORDER BY akcija_id DESC LIMIT 1";
+        $q = "SELECT * FROM proizvodi ORDER BY proizvod_id DESC LIMIT 1";
         return $conn->query($q);
     }
 }

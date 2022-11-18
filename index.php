@@ -105,14 +105,12 @@ if ($resultAkcija2->num_rows == 0) {
     <div class="d-flex justify-content-between  mb-5 mt-5">  
       <h1>Dobrodošli u komandnu tablu</h1>
     </div>
-  
     <div class="row">
       <div class="col-sm-6">
         <div class="card velikekartice  text-bg-primary mb-3">
           <div class="card-body">
             <h5 class="card-title">Uređujte akcije</h5>
             <p class="card-text">Dodajte nove akcije, izmenite ili obrišite postojeće.</p>
-      
           </div>
         </div>
       </div>
@@ -121,12 +119,10 @@ if ($resultAkcija2->num_rows == 0) {
           <div class="card-body">
             <h5 class="card-title">Uređujte proizvode</h5>
             <p class="card-text">Dodajte nove proizvode, izmenite ili obrišite postojeće.</p>
-          
           </div>
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-sm-4">
         <div class="card malekartice text-bg-light mb-3" >
@@ -158,10 +154,8 @@ if ($resultAkcija2->num_rows == 0) {
     </div>
     
   </div>
-
 <!-- AKCIJE -->
   <div class="tab-pane fade" id="pills-akcije" role="tabpanel" aria-labelledby="pills-akcije-tab" tabindex="0">
- 
       <div class="d-flex justify-content-between  mb-5 mt-5">  
           <h1>Akcije</h1>
           <div class="input-group flex-nowrap w-250">
@@ -174,7 +168,6 @@ if ($resultAkcija2->num_rows == 0) {
             Dodaj novu akciju
           </button>
       </div>
-      
       <div class="modal fade" id="dodaj" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
           <div class="modal-content">
@@ -267,7 +260,6 @@ if ($resultAkcija2->num_rows == 0) {
           </div>
         </div>
       </div>
-      
       <p class="text-muted">
         <span class="badge rounded-pill text-bg-secondary">?</span>
         Klikom na naziv kolone možete izvršiti sortiranje.
@@ -289,12 +281,12 @@ if ($resultAkcija2->num_rows == 0) {
                   <td><?php echo $red["naziv"] ?></td>
                   <td><?php echo $red["procenat_popusta"] ?></td>
                   <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#izmeni" 
-                      onclick="otvoriModalIzmeniSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
+                      onclick="otvoriIzmeniAkcijuSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
                           Izmeni 
                       </button>
                   </td>
                   <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#obrisi"
-                      onclick="otvoriModalObrisiSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
+                      onclick="otvoriObrisiAkcijuSaPodacima(<?php echo $red["akcija_id"] ?>,'<?php echo $red["naziv"] ?>',<?php echo $red["procenat_popusta"] ?>)">
                           Obriši 
                       </button> 
                   </td>
@@ -318,8 +310,6 @@ if ($resultAkcija2->num_rows == 0) {
         Dodaj novi proizvod
       </button>
     </div>
-
-
     <div class="modal fade" id="dodajP" tabindex="-1" aria-labelledby="dodajLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"">
         <div class="modal-content">
@@ -438,8 +428,6 @@ if ($resultAkcija2->num_rows == 0) {
         </div>
       </div>
     </div>
-
-
     <p class="text-muted">
       <span class="badge rounded-pill text-bg-secondary">?</span>
       Klikom na naziv kolone možete izvršiti sortiranje.
@@ -486,6 +474,8 @@ if ($resultAkcija2->num_rows == 0) {
   </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

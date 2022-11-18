@@ -1,4 +1,3 @@
-<?php ?>
 <?php 
 class Akcija
 {
@@ -33,10 +32,6 @@ class Akcija
         $q = "DELETE FROM akcije WHERE akcija_id=$akcija_id";
         return $conn->query($q);
     }
-    public static function uzmiPoslednju(mysqli $conn)
-    {
-        $q = "SELECT * FROM akcije ORDER BY akcija_id DESC LIMIT 1";
-        return $conn->query($q);
-    } 
+    
 }
 ?>
